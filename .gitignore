@@ -1,0 +1,14 @@
+.codex
+.venv/
+.uv-cache/
+__pycache__/
+.pytest_cache/
+build/
+dist/
+*.pyc
+data/raw/
+data/discovery/
+data/imports/
+data/normalized/
+data/processed/
+reports/staging/

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "xpost123",
+    "text": "NotebookLM citations and source support are the reason this category feels trustworthy at all.",
+    "created_at": "2025-08-21T17:43:00Z",
+    "username": "exampleuser",
+    "favorite_count": 12,
+    "reply_count": 4
+  },
+  {
+    "id": "xreply123",
+    "text": "The problem is not AI, it is whether I can check the source and control what gets uploaded.",
+    "created_at": "2025-08-21T18:00:00Z",
+    "username": "replyuser",
+    "favorite_count": 3,
+    "reply_count": 0,
+    "record_type": "reply",
+    "in_reply_to_status_id": "xpost123"
+  }
+]
+

@@ -1,0 +1,301 @@
+{
+  "reddit": [
+    {
+      "target_id": "reddit_obsidianmd",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/ObsidianMD",
+      "handle": "ObsidianMD",
+      "url": "https://www.reddit.com/r/ObsidianMD/",
+      "priority": "high",
+      "rationale": "Dense discussion about note workflows, local-first preferences, second-brain habits, and AI/privacy objections.",
+      "concept_fit": ["context_engine", "trust_provenance", "setup_friction", "memory_continuity"]
+    },
+    {
+      "target_id": "reddit_pkms",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/PKMS",
+      "handle": "PKMS",
+      "url": "https://www.reddit.com/r/PKMS/",
+      "priority": "high",
+      "rationale": "Direct discussion of second-brain systems, retrieval, personal knowledge workflows, and tool dissatisfaction.",
+      "concept_fit": ["context_engine", "memory_continuity", "workflow_usefulness"]
+    },
+    {
+      "target_id": "reddit_notebooklm",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/notebooklm",
+      "handle": "notebooklm",
+      "url": "https://www.reddit.com/r/notebooklm/",
+      "priority": "high",
+      "rationale": "Rich source for grounded-answer expectations, citation behavior, source import pain, and trust concerns.",
+      "concept_fit": ["trust_provenance", "workflow_usefulness", "selective_ingest"]
+    },
+    {
+      "target_id": "reddit_productivity",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/productivity",
+      "handle": "productivity",
+      "url": "https://www.reddit.com/r/productivity/",
+      "priority": "medium",
+      "rationale": "Broader mainstream user language around organization, overwhelm, planning, and tool-switching triggers.",
+      "concept_fit": ["workflow_usefulness", "setup_friction", "context_engine"]
+    },
+    {
+      "target_id": "reddit_sideproject",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/SideProject",
+      "handle": "SideProject",
+      "url": "https://www.reddit.com/r/SideProject/",
+      "priority": "medium",
+      "rationale": "Indie builders frequently describe context assembly pain, multi-source workflows, and local-first AI utility in concrete product terms.",
+      "concept_fit": ["context_engine", "selective_ingest", "workflow_usefulness"]
+    },
+    {
+      "target_id": "reddit_sideprojects",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/sideprojects",
+      "handle": "sideprojects",
+      "url": "https://www.reddit.com/r/sideprojects/",
+      "priority": "low",
+      "rationale": "Useful for discovery of lightweight founder pain and early product language outside specialist PKM communities.",
+      "concept_fit": ["workflow_usefulness", "setup_friction"]
+    },
+    {
+      "target_id": "reddit_entrepreneur",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/Entrepreneur",
+      "handle": "Entrepreneur",
+      "url": "https://www.reddit.com/r/Entrepreneur/",
+      "priority": "high",
+      "rationale": "Strong place to find operator language around ROI, workflow pain, and skepticism toward hype-driven automation.",
+      "concept_fit": ["workflow_usefulness", "setup_friction", "context_engine"]
+    },
+    {
+      "target_id": "reddit_smallbusiness",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/smallbusiness",
+      "handle": "smallbusiness",
+      "url": "https://www.reddit.com/r/smallbusiness/",
+      "priority": "high",
+      "rationale": "High-value signal on mundane but monetizable workflows, documentation pain, and operational trust requirements.",
+      "concept_fit": ["workflow_usefulness", "trust_provenance", "selective_ingest"]
+    },
+    {
+      "target_id": "reddit_solopreneur",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/Solopreneur",
+      "handle": "Solopreneur",
+      "url": "https://www.reddit.com/r/Solopreneur/",
+      "priority": "high",
+      "rationale": "Dense signal from one-person operators dealing with scattered notes, tool overload, planning friction, and short-window workflow needs.",
+      "concept_fit": ["workflow_usefulness", "setup_friction", "memory_continuity", "context_engine"]
+    },
+    {
+      "target_id": "reddit_automation",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/automation",
+      "handle": "automation",
+      "url": "https://www.reddit.com/r/automation/",
+      "priority": "medium",
+      "rationale": "Good source for practical workflow design patterns, especially review loops and structured-output discussions.",
+      "concept_fit": ["workflow_usefulness", "trust_provenance", "selective_ingest"]
+    },
+    {
+      "target_id": "reddit_selfhosted",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/selfhosted",
+      "handle": "selfhosted",
+      "url": "https://www.reddit.com/r/selfhosted/",
+      "priority": "medium",
+      "rationale": "Unexpected but valuable source for privacy, ownership, local-first tooling, and text-based workflows.",
+      "concept_fit": ["trust_provenance", "setup_friction", "context_engine"]
+    },
+    {
+      "target_id": "reddit_privacy",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/privacy",
+      "handle": "privacy",
+      "url": "https://www.reddit.com/r/privacy/",
+      "priority": "medium",
+      "rationale": "Contrarian and skeptical audience for data-control objections and anti-surveillance framing.",
+      "concept_fit": ["trust_provenance"]
+    },
+    {
+      "target_id": "reddit_sysadmin",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/sysadmin",
+      "handle": "sysadmin",
+      "url": "https://www.reddit.com/r/sysadmin/",
+      "priority": "medium",
+      "rationale": "Strong signal on documentation usability, internal knowledge systems, and low-friction team retrieval.",
+      "concept_fit": ["workflow_usefulness", "context_engine", "setup_friction"]
+    },
+    {
+      "target_id": "reddit_adhd",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/ADHD",
+      "handle": "ADHD",
+      "url": "https://www.reddit.com/r/ADHD/",
+      "priority": "low",
+      "rationale": "Unexpected source for overwhelm, fragmentation, capture friction, and intolerance for setup complexity.",
+      "concept_fit": ["setup_friction", "memory_continuity", "workflow_usefulness"]
+    },
+    {
+      "target_id": "reddit_minimalism",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/minimalism",
+      "handle": "minimalism",
+      "url": "https://www.reddit.com/r/minimalism/",
+      "priority": "low",
+      "rationale": "Contrarian pressure test against feature-heavy productivity systems and needless tool sprawl.",
+      "concept_fit": ["setup_friction", "workflow_usefulness"]
+    },
+    {
+      "target_id": "reddit_antiwork",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/antiwork",
+      "handle": "antiwork",
+      "url": "https://www.reddit.com/r/antiwork/",
+      "priority": "low",
+      "rationale": "Contrarian source for distrust of automation, employer surveillance, and workflow extraction rhetoric.",
+      "concept_fit": ["trust_provenance", "workflow_usefulness"]
+    },
+    {
+      "target_id": "reddit_localllama",
+      "platform": "reddit",
+      "kind": "subreddit",
+      "name": "r/LocalLLaMA",
+      "handle": "LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/",
+      "priority": "medium",
+      "rationale": "Strong signal on privacy, local-first AI, and practical self-hosted workflows.",
+      "concept_fit": ["trust_provenance", "setup_friction", "workflow_usefulness"]
+    }
+  ],
+  "x": [
+    {
+      "target_id": "x_obsdmd",
+      "platform": "x",
+      "kind": "profile",
+      "name": "Obsidian",
+      "handle": "obsdmd",
+      "url": "https://x.com/obsdmd",
+      "priority": "high",
+      "rationale": "Official Obsidian audience is a strong proxy for local-first note and PKM sentiment.",
+      "concept_fit": ["context_engine", "trust_provenance", "memory_continuity"]
+    },
+    {
+      "target_id": "x_googlelabs_notebooklm",
+      "platform": "x",
+      "kind": "profile",
+      "name": "Google Labs",
+      "handle": "GoogleLabs",
+      "url": "https://x.com/GoogleLabs",
+      "priority": "high",
+      "rationale": "NotebookLM feature posts attract reply chains about grounding, usefulness, citations, and import behavior.",
+      "concept_fit": ["trust_provenance", "workflow_usefulness", "selective_ingest"]
+    },
+    {
+      "target_id": "x_google_notebooklm_mentions",
+      "platform": "x",
+      "kind": "profile",
+      "name": "Google",
+      "handle": "Google",
+      "url": "https://x.com/Google",
+      "priority": "medium",
+      "rationale": "Major NotebookLM launch posts produce broad public reply sentiment beyond niche PKM users.",
+      "concept_fit": ["workflow_usefulness", "trust_provenance"]
+    },
+    {
+      "target_id": "x_whoistana",
+      "platform": "x",
+      "kind": "profile",
+      "name": "tana",
+      "handle": "whoistana",
+      "url": "https://x.com/whoistana",
+      "priority": "medium",
+      "rationale": "Useful for tracking discussion on AI knowledge workflows and what users expect from an 'everything OS' for notes.",
+      "concept_fit": ["context_engine", "workflow_usefulness", "setup_friction"]
+    },
+    {
+      "target_id": "x_simonw",
+      "platform": "x",
+      "kind": "profile",
+      "name": "Simon Willison",
+      "handle": "simonw",
+      "url": "https://x.com/simonw",
+      "priority": "medium",
+      "rationale": "High-signal technical audience discussing local AI, agent safety, grounded workflows, and product tradeoffs.",
+      "concept_fit": ["trust_provenance", "workflow_usefulness", "memory_continuity"]
+    },
+    {
+      "target_id": "x_hashtag_notebooklm",
+      "platform": "x",
+      "kind": "hashtag",
+      "name": "#NotebookLM",
+      "handle": "notebooklm",
+      "url": "https://x.com/hashtag/notebooklm",
+      "priority": "medium",
+      "rationale": "Hashtag search captures a broader set of user demonstrations, frustrations, and comparisons.",
+      "concept_fit": ["workflow_usefulness", "trust_provenance", "selective_ingest"]
+    }
+  ],
+  "forums": [
+    {
+      "target_id": "forum_hacker_news",
+      "platform": "forum",
+      "kind": "forum",
+      "name": "Hacker News",
+      "handle": "news.ycombinator.com",
+      "url": "https://news.ycombinator.com/",
+      "priority": "high",
+      "rationale": "High-signal discussion of tools, grounded workflows, and skeptical technical commentary."
+    },
+    {
+      "target_id": "forum_indie_hackers",
+      "platform": "forum",
+      "kind": "forum",
+      "name": "Indie Hackers",
+      "handle": "indiehackers.com",
+      "url": "https://www.indiehackers.com/",
+      "priority": "medium",
+      "rationale": "Founder and operator language around workflow ROI, lightweight software, and customer pain."
+    },
+    {
+      "target_id": "forum_obsidian",
+      "platform": "forum",
+      "kind": "forum",
+      "name": "Obsidian Forum",
+      "handle": "forum.obsidian.md",
+      "url": "https://forum.obsidian.md/",
+      "priority": "medium",
+      "rationale": "Dense qualitative material on workflow patterns, plugin objections, and onboarding friction."
+    },
+    {
+      "target_id": "forum_lobsters",
+      "platform": "forum",
+      "kind": "forum",
+      "name": "Lobsters",
+      "handle": "lobste.rs",
+      "url": "https://lobste.rs/",
+      "priority": "low",
+      "rationale": "Technical contrarian audience useful for skepticism about overbuilt agent products."
+    }
+  ]
+}

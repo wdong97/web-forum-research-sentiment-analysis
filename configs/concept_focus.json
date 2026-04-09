@@ -1,0 +1,30 @@
+{
+  "focus_name": "personalized_os_core",
+  "focus_description": "Context engine, world model, selective ingest, trust, provenance, reviewable memory, and concrete workflow usefulness.",
+  "concept_keywords": {
+    "context_engine": ["context", "world model", "shared brain", "company brain", "second brain", "knowledge base", "retrieve", "remember"],
+    "trust_provenance": ["privacy", "local-first", "source", "citation", "evidence", "provenance", "explain", "why", "reviewable", "checkpoint"],
+    "workflow_usefulness": ["workflow", "brief", "follow-up", "today", "planning", "dashboard", "copilot", "organize", "synthesize"],
+    "selective_ingest": ["clip", "clipping", "import", "source set", "connect only", "upload", "sync", "bring in"],
+    "memory_continuity": ["context amnesia", "continuity", "persistent memory", "long-term", "carry over", "same context", "history"],
+    "setup_friction": ["setup", "config", "configure", "templates", "complex", "friction", "too much work"]
+  },
+  "screen_queries": {
+    "reddit": [
+      "obsidian ai privacy context",
+      "obsidian second brain local ai",
+      "notebooklm grounded citations privacy",
+      "pkms ai memory trust",
+      "productivity ai organize context",
+      "local llm notes workflow"
+    ],
+    "x": [
+      "NotebookLM citations context",
+      "Obsidian local AI notes privacy",
+      "AI second brain context amnesia",
+      "shared brain team AI markdown",
+      "reviewable memory AI workflow"
+    ]
+  }
+}
+

@@ -1,0 +1,58 @@
+{
+  "segments": {
+    "creators": ["artist", "creator", "release", "music", "brand", "content", "youtube", "podcast"],
+    "second_brain_power_users": ["obsidian", "pkm", "second brain", "zettelkasten", "knowledge base", "notebooklm", "tana", "roam", "notes app", "vault"],
+    "small_team_operators": ["team", "client", "consultancy", "agency", "ops", "workflow", "company brain", "meetings", "proposal", "deal", "follow-up"]
+  },
+  "jobs": {
+    "organize scattered information into a usable context layer": ["organize", "find", "retrieve", "context", "knowledge", "brain", "searchable", "remember"],
+    "turn source material into summaries and briefs": ["summary", "summarize", "brief", "extract", "synthesize", "grounded"],
+    "maintain continuity across projects and sessions": ["remember", "context continuity", "context amnesia", "persistent memory", "long-term"],
+    "reduce setup and workflow friction": ["setup", "configure", "workflow", "friction", "templates", "config files"],
+    "protect sensitive information while using AI help": ["privacy", "private", "local", "gdpr", "encrypted", "data", "trust"]
+  },
+  "pain_points": {
+    "setup and configuration overhead": ["setup", "configure", "workflow", "config", "friction", "complicated", "complex backend"],
+    "trust and privacy risk": ["privacy", "private", "data away", "gdpr", "encrypted", "trust", "local-first", "local"],
+    "hallucinations and weak grounding": ["hallucination", "lying", "wrong", "grounded", "source-aware", "citation"],
+    "context fragmentation and amnesia": ["fragmented", "scattered", "context amnesia", "re-explain", "continuity", "remember context"],
+    "low signal from generic AI wrappers": ["generic", "toy", "magic", "not useful", "free-floating summary"]
+  },
+  "desires": {
+    "source-grounded synthesis": ["grounded", "citation", "source-linked", "evidence", "why"],
+    "local-first or privacy-preserving AI": ["local", "private", "encrypted", "own the data", "privacy-first"],
+    "calmer and simpler workflow surface": ["simple", "calm", "no config", "just works", "narrow workflow"],
+    "shared team memory": ["company brain", "shared brain", "team", "coordination"],
+    "workflow-specific copilots": ["release planning", "follow-up", "planning", "brief", "copilot"]
+  },
+  "objections": {
+    "too much setup for too little value": ["setup", "config", "workflow", "templates", "complex"],
+    "will not trust it with my private context": ["private", "privacy", "data away", "gdpr", "local"],
+    "generic summaries are not enough": ["generic", "toy", "summary", "not useful"],
+    "I do not want opaque automation": ["opaque", "magic", "autonomous", "reviewable", "why"]
+  },
+  "trust_concerns": {
+    "data leaves user control": ["data away", "google", "openai", "anthropic", "privacy", "gdpr"],
+    "insufficient provenance or explanations": ["citation", "source", "grounded", "why", "evidence"],
+    "automation without checkpoints": ["autonomous", "review", "approval", "checkpoint"],
+    "vendor lock-in or proprietary storage": ["proprietary", "format", "vault", "own the data"]
+  },
+  "tools": [
+    "Obsidian",
+    "NotebookLM",
+    "Tana",
+    "Notion",
+    "Granola",
+    "Mem",
+    "Roam",
+    "Google Docs",
+    "Slack",
+    "Email"
+  ],
+  "buying_signals": {
+    "strong": ["core tool", "pay", "worth it", "insanely helpful", "need this", "daily use"],
+    "medium": ["helpful", "useful", "interesting", "would use", "want this"],
+    "weak": ["toy", "not sure", "maybe", "curious"]
+  }
+}
+

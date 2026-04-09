@@ -1,0 +1,40 @@
+[
+  {
+    "data": {
+      "children": [
+        {
+          "data": {
+            "id": "post123",
+            "title": "How do you keep everything organized when you’re doing everything yourself?",
+            "selftext": "The hard part is keeping product, docs, planning, ideas, and admin from getting scattered.",
+            "author": "example_author",
+            "created_utc": "2026-01-21T00:00:00Z",
+            "score": 61,
+            "num_comments": 2,
+            "subreddit": "Solopreneur",
+            "permalink": "/r/Solopreneur/comments/post123/how_do_you_keep_everything_organized/"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "data": {
+      "children": [
+        {
+          "data": {
+            "id": "comment123",
+            "body": "I need tools that help fast, not stacks that take hours to organize.",
+            "author": "commenter_one",
+            "created_utc": "2026-01-21T01:00:00Z",
+            "score": 5,
+            "subreddit": "Solopreneur",
+            "link_id": "post123",
+            "permalink": "/r/Solopreneur/comments/post123/how_do_you_keep_everything_organized/comment123/"
+          }
+        }
+      ]
+    }
+  }
+]
+

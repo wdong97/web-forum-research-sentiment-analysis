@@ -1,0 +1,20 @@
+[project]
+name = "voc-research-pipeline"
+version = "0.1.0"
+description = "Config-driven thread research and sentiment analysis pipeline for Reddit, X, forums, and exported public discussions."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+pos-research = "market_research_pipeline.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
