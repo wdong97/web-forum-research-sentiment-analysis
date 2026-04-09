@@ -10,6 +10,8 @@ from .pipeline import (
     ingest_input,
     repo_paths,
     run_comment_screen,
+    run_discourse_import,
+    run_hn_import,
     run_all,
     run_reddit_x_batch,
     run_reddit_import,
@@ -41,6 +43,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     x_import_dir = subparsers.add_parser("import-x-dir", help="Import a directory of X exports")
     x_import_dir.add_argument("--input-dir", required=True)
+
+    hn_import = subparsers.add_parser("import-hn-algolia", help="Import a Hacker News Algolia JSON export")
+    hn_import.add_argument("--input", required=True)
+
+    discourse_import = subparsers.add_parser("import-discourse-topic", help="Import a Discourse topic JSON export")
+    discourse_import.add_argument("--input", required=True)
+    discourse_import.add_argument("--forum-base", required=True)
 
     discover = subparsers.add_parser("discover-targets", help="Materialize curated Reddit/X source targets")
     discover.add_argument("--targets-config", default="configs/source_targets.json")
@@ -115,6 +124,18 @@ def main() -> None:
         run_x_dir_import(Path(args.input_dir), repo_root)
         print(paths["imported_x_posts"])
         print(paths["imported_x_comments"])
+        return
+
+    if args.command == "import-hn-algolia":
+        run_hn_import(Path(args.input), repo_root)
+        print(paths["imported_forum_posts"])
+        print(paths["imported_forum_comments"])
+        return
+
+    if args.command == "import-discourse-topic":
+        run_discourse_import(Path(args.input), repo_root, forum_base=args.forum_base)
+        print(paths["imported_forum_posts"])
+        print(paths["imported_forum_comments"])
         return
 
     if args.command == "discover-targets":

@@ -52,15 +52,53 @@ Outputs:
 - `data/imports/x_posts.jsonl`
 - `data/imports/x_comments.jsonl`
 
+## Hacker News Algolia Export
+
+Supported shape:
+
+- Algolia JSON with `hits`
+
+CLI:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-hn-algolia \
+  --input path/to/hn_algolia.json
+```
+
+Outputs:
+
+- `data/imports/forum_posts.jsonl`
+- `data/imports/forum_comments.jsonl`
+
+## Discourse Topic Export
+
+Supported shape:
+
+- Discourse topic JSON with `post_stream.posts`
+
+CLI:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-discourse-topic \
+  --input path/to/topic.json \
+  --forum-base https://forum.example.com
+```
+
+Outputs:
+
+- `data/imports/forum_posts.jsonl`
+- `data/imports/forum_comments.jsonl`
+
 ## Recommended Weekly Flow
 
 1. Import Reddit thread exports
 2. Import X post/reply exports
-3. Run `screen-posts` on imported posts
-4. Run `screen-comments` on imported comments
-5. Run `classify`
-6. Run `cluster`
-7. Refresh markdown summaries
+3. Import any forum exports or thread JSON
+4. Run `screen-posts` on imported posts
+5. Run `screen-comments` on imported comments
+6. Run `classify`
+7. Run `cluster`
+8. Refresh markdown summaries
 
 Or run the full batch:
 
@@ -75,5 +113,7 @@ For higher-volume weekly runs:
 ```bash
 PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-reddit-dir --input-dir path/to/reddit_exports
 PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-x-dir --input-dir path/to/x_exports
+PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-hn-algolia --input path/to/hn_algolia.json
+PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli import-discourse-topic --input path/to/topic.json --forum-base https://forum.example.com
 PYTHONPATH=src .venv/bin/python -m market_research_pipeline.cli run-reddit-x-batch
 ```

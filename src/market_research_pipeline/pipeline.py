@@ -5,7 +5,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .adapters import import_reddit_dir, import_reddit_thread, import_x_dir, import_x_export
+from .adapters import (
+    import_discourse_topic,
+    import_hn_algolia,
+    import_reddit_dir,
+    import_reddit_thread,
+    import_x_dir,
+    import_x_export,
+)
 from .classify import classify_post, load_taxonomy
 from .cluster import cluster_posts
 from .discovery import discover_targets
@@ -31,6 +38,8 @@ def repo_paths(repo_root: Path) -> dict[str, Path]:
         "imported_reddit_comments": repo_root / "data/imports/reddit_comments.jsonl",
         "imported_x_posts": repo_root / "data/imports/x_posts.jsonl",
         "imported_x_comments": repo_root / "data/imports/x_comments.jsonl",
+        "imported_forum_posts": repo_root / "data/imports/forum_posts.jsonl",
+        "imported_forum_comments": repo_root / "data/imports/forum_comments.jsonl",
         "screened_posts": repo_root / "data/processed/screened_posts.jsonl",
         "screened_comments": repo_root / "data/processed/screened_comments.jsonl",
         "screened_posts_md": repo_root / "reports/staging/post-screening-summary.md",
@@ -97,11 +106,40 @@ def run_x_dir_import(input_dir: Path, repo_root: Path) -> tuple[list[dict], list
     return import_x_dir(input_dir, paths["imported_x_posts"], paths["imported_x_comments"])
 
 
+def run_hn_import(input_path: Path, repo_root: Path) -> tuple[list[dict], list[dict]]:
+    paths = repo_paths(repo_root)
+    posts, comments = import_hn_algolia(input_path, paths["imported_forum_posts"], paths["imported_forum_comments"])
+    return (
+        _merge_rows_into_jsonl(posts, paths["imported_forum_posts"]),
+        _merge_rows_into_jsonl(comments, paths["imported_forum_comments"]),
+    )
+
+
+def run_discourse_import(input_path: Path, repo_root: Path, forum_base: str) -> tuple[list[dict], list[dict]]:
+    paths = repo_paths(repo_root)
+    posts, comments = import_discourse_topic(input_path, paths["imported_forum_posts"], paths["imported_forum_comments"], forum_base=forum_base)
+    return (
+        _merge_rows_into_jsonl(posts, paths["imported_forum_posts"]),
+        _merge_rows_into_jsonl(comments, paths["imported_forum_comments"]),
+    )
+
+
 def _merge_jsonl_files(input_paths: list[Path], output_path: Path) -> list[dict]:
     merged: list[dict] = []
     for path in input_paths:
         if path.exists():
             merged.extend(read_jsonl(path))
+    write_jsonl(output_path, merged)
+    return merged
+
+
+def _merge_rows_into_jsonl(new_rows: list[dict], output_path: Path, unique_key: str = "id") -> list[dict]:
+    existing = read_jsonl(output_path) if output_path.exists() else []
+    merged_map: dict[str, dict] = {}
+    for row in existing + new_rows:
+        key = str(row.get(unique_key) or row.get("post_id") or row.get("url"))
+        merged_map[key] = row
+    merged = list(merged_map.values())
     write_jsonl(output_path, merged)
     return merged
 
@@ -198,8 +236,8 @@ def run_reddit_x_batch(
     effective_taxonomy_path = taxonomy_path or (repo_root / "configs/taxonomy.json")
 
     discovery_payload = run_target_discovery(repo_root, targets_path=effective_targets_path, focus_path=effective_focus_path)
-    _merge_jsonl_files([paths["imported_reddit_posts"], paths["imported_x_posts"]], paths["merged_posts"])
-    _merge_jsonl_files([paths["imported_reddit_comments"], paths["imported_x_comments"]], paths["merged_comments"])
+    _merge_jsonl_files([paths["imported_reddit_posts"], paths["imported_x_posts"], paths["imported_forum_posts"]], paths["merged_posts"])
+    _merge_jsonl_files([paths["imported_reddit_comments"], paths["imported_x_comments"], paths["imported_forum_comments"]], paths["merged_comments"])
 
     screened_posts = run_post_screen(paths["merged_posts"], repo_root, min_score=post_min_score, focus_path=effective_focus_path)
     screened_comments = run_comment_screen(paths["merged_comments"], repo_root, min_score=comment_min_score, focus_path=effective_focus_path)

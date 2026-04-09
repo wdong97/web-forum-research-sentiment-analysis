@@ -211,3 +211,146 @@ def import_x_dir(input_dir: Path, posts_output: Path, comments_output: Path) -> 
     write_jsonl(posts_output, posts)
     write_jsonl(comments_output, comments)
     return posts, comments
+
+
+def _hn_post_row(item: dict, snapshot_path: str) -> dict:
+    post_id = _string(item.get("objectID") or item.get("story_id") or item.get("id"))
+    story_id = _string(item.get("story_id") or post_id)
+    url = _string(item.get("url")) or f"https://news.ycombinator.com/item?id={story_id}"
+    title = _string(item.get("title"))
+    story_text = _string(item.get("story_text"))
+    return {
+        "id": post_id,
+        "source": "hacker_news",
+        "source_type": "post",
+        "thread_id": story_id,
+        "url": url,
+        "created_at": _string(item.get("created_at")),
+        "author": _string(item.get("author")),
+        "title": title,
+        "body": story_text,
+        "raw_text": story_text or title,
+        "score": item.get("points") or 0,
+        "comment_count": item.get("num_comments") or 0,
+        "engagement": (item.get("points") or 0) + (item.get("num_comments") or 0),
+        "tags": ["hacker_news"],
+        "source_metadata": {
+            "adapter": "hn_algolia",
+            "capture_method": "import_adapter",
+            "snapshot_path": snapshot_path,
+        },
+    }
+
+
+def _hn_comment_row(item: dict, snapshot_path: str) -> dict:
+    story_id = _string(item.get("story_id") or item.get("storyId"))
+    return {
+        "id": _string(item.get("objectID") or item.get("id")),
+        "source": "hacker_news",
+        "source_type": "comment",
+        "thread_id": story_id,
+        "url": f"https://news.ycombinator.com/item?id={item.get('objectID') or story_id}",
+        "created_at": _string(item.get("created_at")),
+        "author": _string(item.get("author")),
+        "title": "",
+        "body": _string(item.get("comment_text")),
+        "raw_text": _string(item.get("comment_text")),
+        "parent_title": _string(item.get("story_title")),
+        "parent_body": _string(item.get("story_text")),
+        "score": item.get("points") or 0,
+        "comment_count": 0,
+        "engagement": item.get("points") or 0,
+        "tags": ["hacker_news"],
+        "source_metadata": {
+            "adapter": "hn_algolia",
+            "capture_method": "import_adapter",
+            "snapshot_path": snapshot_path,
+        },
+    }
+
+
+def import_hn_algolia(input_path: Path, posts_output: Path, comments_output: Path) -> tuple[list[dict], list[dict]]:
+    payload = read_json(input_path)
+    rows = _ensure_list(payload)
+    posts: list[dict] = []
+    comments: list[dict] = []
+    for row in rows:
+        if row.get("comment_text"):
+            comments.append(_hn_comment_row(row, str(input_path)))
+        else:
+            posts.append(_hn_post_row(row, str(input_path)))
+    write_jsonl(posts_output, posts)
+    write_jsonl(comments_output, comments)
+    return posts, comments
+
+
+def _discourse_post_row(topic: dict, snapshot_path: str, source_name: str) -> dict:
+    topic_id = _string(topic.get("id") or topic.get("topic_id"))
+    slug = _string(topic.get("slug"))
+    url = _string(topic.get("url")) or f"{source_name.rstrip('/')}/t/{slug}/{topic_id}"
+    title = _string(topic.get("title"))
+    cooked = _string(topic.get("cooked") or topic.get("excerpt"))
+    return {
+        "id": topic_id,
+        "source": "forum",
+        "source_type": "post",
+        "thread_id": topic_id,
+        "url": url,
+        "created_at": _string(topic.get("created_at")),
+        "author": _string(topic.get("username") or topic.get("author")),
+        "title": title,
+        "body": cooked,
+        "raw_text": cooked or title,
+        "score": topic.get("like_count") or topic.get("views") or 0,
+        "comment_count": topic.get("posts_count") or topic.get("reply_count") or 0,
+        "engagement": (topic.get("like_count") or 0) + (topic.get("posts_count") or topic.get("reply_count") or 0),
+        "tags": ["forum", "discourse"],
+        "source_metadata": {
+            "adapter": "discourse_topic",
+            "capture_method": "import_adapter",
+            "snapshot_path": snapshot_path,
+            "forum_base": source_name,
+        },
+    }
+
+
+def _discourse_comment_row(post: dict, topic: dict, snapshot_path: str, source_name: str) -> dict:
+    topic_id = _string(topic.get("id") or topic.get("topic_id"))
+    slug = _string(topic.get("slug"))
+    url = f"{source_name.rstrip('/')}/t/{slug}/{topic_id}/{post.get('post_number')}"
+    return {
+        "id": _string(post.get("id")),
+        "source": "forum",
+        "source_type": "comment",
+        "thread_id": topic_id,
+        "url": url,
+        "created_at": _string(post.get("created_at")),
+        "author": _string(post.get("username") or post.get("author")),
+        "title": "",
+        "body": _string(post.get("cooked") or post.get("raw")),
+        "raw_text": _string(post.get("cooked") or post.get("raw")),
+        "parent_title": _string(topic.get("title")),
+        "parent_body": _string(topic.get("post_stream", {})),
+        "score": post.get("like_count") or 0,
+        "comment_count": 0,
+        "engagement": post.get("like_count") or 0,
+        "tags": ["forum", "discourse"],
+        "source_metadata": {
+            "adapter": "discourse_topic",
+            "capture_method": "import_adapter",
+            "snapshot_path": snapshot_path,
+            "forum_base": source_name,
+        },
+    }
+
+
+def import_discourse_topic(input_path: Path, posts_output: Path, comments_output: Path, forum_base: str = "https://forum.example.com") -> tuple[list[dict], list[dict]]:
+    topic = read_json(input_path)
+    posts: list[dict] = []
+    comments: list[dict] = []
+    posts.append(_discourse_post_row(topic, str(input_path), forum_base))
+    for post in topic.get("post_stream", {}).get("posts", [])[1:]:
+        comments.append(_discourse_comment_row(post, topic, str(input_path), forum_base))
+    write_jsonl(posts_output, posts)
+    write_jsonl(comments_output, comments)
+    return posts, comments

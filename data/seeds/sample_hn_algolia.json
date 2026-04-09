@@ -1,0 +1,23 @@
+{
+  "hits": [
+    {
+      "objectID": "47470850",
+      "author": "raw_anon_1111",
+      "comment_text": "This seems like a solved problem. Any RAG interface I design has links to the original source and passage. Even NotebookLM does this.",
+      "created_at": "2026-03-21T20:16:06Z",
+      "story_id": "47467566",
+      "story_title": "Senior European journalist suspended over AI-generated quotes",
+      "story_url": "https://www.theguardian.com/technology/2026/mar/20/mediahuis-suspends-senior-journalist-over-ai-generated-quotes"
+    },
+    {
+      "objectID": "47654106",
+      "author": "thoughtpeddler",
+      "comment_text": "NotebookLM shows that notebook-style AI is viable for knowledge management, but I still want something closer to version control for LLM notebooks than a wiki.",
+      "created_at": "2026-04-05T21:36:18Z",
+      "story_id": "47640875",
+      "story_title": "LLM Wiki – example of an idea file",
+      "story_url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+    }
+  ]
+}
+

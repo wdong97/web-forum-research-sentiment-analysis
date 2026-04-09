@@ -28,10 +28,12 @@ The current default profile is a Personalized OS example, but the repo is reusab
 - bulk Reddit directory import
 - X post and reply import from JSON, JSONL, or CSV exports
 - bulk X directory import
+- Hacker News Algolia JSON import
+- Discourse topic JSON import for forums like Obsidian Forum
 - concept-focused screening for posts and comments
 - deterministic first-pass classification
 - theme clustering
-- one-shot batch execution over imported Reddit/X data
+- one-shot batch execution over imported Reddit/X/forum data
 
 ## Installation
 
@@ -68,6 +70,8 @@ pos-research import-reddit-thread --input path/to/thread.json
 pos-research import-reddit-dir --input-dir path/to/reddit_exports
 pos-research import-x-export --input path/to/x_export.json
 pos-research import-x-dir --input-dir path/to/x_exports
+pos-research import-hn-algolia --input path/to/hn_algolia.json
+pos-research import-discourse-topic --input path/to/topic.json --forum-base https://forum.example.com
 pos-research discover-targets --focus-config configs/concept_focus.json --targets-config configs/source_targets.json
 pos-research screen-posts --input path/to/posts.jsonl --focus-config configs/concept_focus.json
 pos-research screen-comments --input path/to/comments.jsonl --focus-config configs/concept_focus.json
@@ -99,8 +103,9 @@ This repo is designed to scale through imports, not fragile live scraping.
 For 1k to 10k+ items, the practical path is:
 
 1. collect Reddit thread exports and X reply exports in directories
-2. run `import-reddit-dir` and `import-x-dir`
-3. run `run-reddit-x-batch`
+2. import any available forum exports or public thread JSON
+3. run `import-reddit-dir`, `import-x-dir`, and any forum imports
+4. run `run-reddit-x-batch`
 
 In constrained environments, direct public API access may be blocked or rate-limited. Export-driven ingestion is the stable path.
 

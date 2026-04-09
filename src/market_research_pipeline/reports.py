@@ -296,6 +296,12 @@ def render_research_summary(
             lines.append(f"- **{target['name']}** ({target['priority']}): {target['rationale']} {target['url']}")
         lines.append("")
 
+    if discovery_payload["targets"].get("forums"):
+        lines.extend(["### Forums", ""])
+        for target in discovery_payload["targets"]["forums"]:
+            lines.append(f"- **{target['name']}** ({target['priority']}): {target['rationale']} {target['url']}")
+        lines.append("")
+
     lines.extend(["## Post Screening", ""])
     ranked_posts = sorted(screened_posts, key=lambda row: (row.get("concept_relevance_score", 0), row.get("score", 0), row.get("comment_count", 0)), reverse=True)
     for row in ranked_posts[:15]:
